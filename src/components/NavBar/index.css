@@ -1,0 +1,9 @@
+.NavBar-container {
+    background-color: #5c25d0;
+    height: 100%;
+    /*width: min-content;*/
+}
+
+a {
+    color: white !important;
+}
