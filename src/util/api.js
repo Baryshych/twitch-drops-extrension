@@ -6,7 +6,7 @@ const jwt = window.Twitch.ext.viewer.sessionToken;
 
 const client = new GraphQLClient(endpoint, {
   credentials: 'include',
-  mode: 'cors',
+  mode: 'no-cors',
   headers: {
     authorization: `Bearer ${jwt}`,
   }
