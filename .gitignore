@@ -1,6 +1,6 @@
 # Configuration
 conf/*
-
+.idea
 # Junk
 .DS_Store
 
