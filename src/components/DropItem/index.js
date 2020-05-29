@@ -1,8 +1,29 @@
 import React from 'react'
-import { Card, Button } from 'react-bootstrap'
+import { Card, Button, Form } from 'react-bootstrap'
 import './index.css'
+import Authentication from "../../util/Authentication/Authentication";
 
 class DropItem extends React.Component{
+    constructor(props) {
+        super(props)
+        this.state = {
+            showKey: false,
+            key: '1234-5678-1011-qqqWq'
+        }
+        this.takeItem = this.takeItem.bind(this)
+    }
+
+    takeItem() {
+        this.setState({showKey: !this.state.showKey})
+    }
+
+    keyForm() {
+        return <Form>
+            <Form.Group controlId="exampleForm.ControlInput1">
+                <Form.Control disabled type="text" defaultValue={this.state.key} />
+            </Form.Group>
+        </Form>
+    }
 
     render(){
             return(
@@ -11,10 +32,12 @@ class DropItem extends React.Component{
                     <Card.Body>
                         <Card.Title>Item name</Card.Title>
                         <Card.Text>
-                            Some quick example text to build on the card title and make up the bulk of
-                            the card's content.
+                            Small item explanation on flaw text
                         </Card.Text>
-                        <Button variant="primary">Take</Button>
+                        {this.state.showKey ?
+                            this.keyForm() :
+                            <Button variant="primary" onClick={this.takeItem}>Take</Button> }
+
                     </Card.Body>
                 </Card>
             )

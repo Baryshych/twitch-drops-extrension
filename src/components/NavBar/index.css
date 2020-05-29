@@ -1,9 +1,12 @@
 .NavBar-container {
     background-color: #5c25d0;
-    height: 100%;
-    /*width: min-content;*/
+    width: 100%;
 }
 
 a {
     color: white !important;
+}
+
+.nav-link.active {
+    background-color: #3e2497 !important;
 }
