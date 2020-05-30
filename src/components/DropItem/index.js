@@ -22,7 +22,8 @@ function DropItem({ name: itemName, imageLink} ) {
   const [name, descr] = itemName.split('|');
 
   return (
-    <Card style={{ width: '18rem' }}>
+    <Card style={{ width: '18rem',background: 'transparent',
+      color: 'white' }} className="dropItem">
       <Card.Img variant="top" src={imageLink} />
       <Card.Body>
         <Card.Title>{name}</Card.Title>
