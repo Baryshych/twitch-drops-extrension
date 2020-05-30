@@ -1,7 +1,6 @@
 import React, { useState } from 'react'
 import { Card, Button, Form } from 'react-bootstrap'
 import './index.css'
-import Authentication from '../../util/Authentication/Authentication';
 
 function DropItem({ name: itemName, imageLink} ) {
   const [showKey, setShowKey] = useState(false);
@@ -14,7 +13,7 @@ function DropItem({ name: itemName, imageLink} ) {
   function keyForm() {
     return <Form>
       <Form.Group controlId="exampleForm.ControlInput1">
-        <Form.Control disabled type="text" defaultValue={this.state.key} />
+        <Form.Control disabled type="text" defaultValue={key} />
       </Form.Group>
     </Form>
   }
