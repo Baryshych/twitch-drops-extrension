@@ -46,7 +46,6 @@ export default class Authentication{
         let isMod = false
         let role = ""
         let user_id = ""
-
         try {
             let decoded = jwt.decode(token)
             
@@ -58,9 +57,8 @@ export default class Authentication{
             role = decoded.role
         } catch (e) {
             token=''
-            opaque_id=''
+            // opaque_id=''
         }
-
         this.state={
             token,
             opaque_id,

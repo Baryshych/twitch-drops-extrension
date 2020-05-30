@@ -1,31 +1,31 @@
-import React from 'react'
-import { CardGroup} from 'react-bootstrap'
+import React, { useEffect } from 'react'
+import { CardGroup } from 'react-bootstrap'
 import './index.css'
-import Authentication from "../../util/Authentication/Authentication";
-import DropList from "../DropList";
-import DropItem from "../DropItem";
+import Authentication from '../../util/Authentication/Authentication';
+import DropList from '../useDropList';
+import DropItem from '../DropItem';
+import useDropList from '../useDropList'
 
-class Inventory extends React.Component {
-    constructor(props) {
-        super(props)
-        this.Authentication = new Authentication()
+function Inventory(props) {
+  const [items, loaded] = useDropList();
 
-        //if the extension is running on twitch or dev rig, set the shorthand here. otherwise, set to null.
-        this.twitch = window.Twitch ? window.Twitch.ext : null
-    }
+  useEffect(() => {
+    if (!loaded) return;
+    alert('Eat shit motherfucker');
+    console.log('Loaded some new')
+  }, [items?.length]);
 
-    render() {
-        return (
-            <div>
-                {/*<DropList userId={this.Authentication.state.user_id || this.Authentication.state.opaque_id}/>*/}
-                <CardGroup>
-                    <DropItem/>
-                    <DropItem/>
-                    <DropItem/>
-                </CardGroup>
-            </div>
-        )
-    }
+  if(!items) return <div>Loading...</div>
+
+  return (
+    <div>
+      {/*<DropList userId={this.Authentication.state.user_id || this.Authentication.state.opaque_id}/>*/}
+      <CardGroup>
+        {!items.length && <div>No items</div>}
+        {items.map(item => <DropItem {...item} />)}
+      </CardGroup>
+    </div>
+  )
 }
 
 export default Inventory
