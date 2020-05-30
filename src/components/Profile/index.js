@@ -1,6 +1,9 @@
 import React from 'react'
 import './index.css'
 
+import { Alert, ListGroup } from 'react-bootstrap';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faCheckSquare } from '@fortawesome/free-solid-svg-icons'
 class Profile extends React.Component {
     constructor(props){
         super(props)
@@ -10,9 +13,16 @@ class Profile extends React.Component {
         this.twitch = window.Twitch ? window.Twitch.ext : null
     }
     render() {
+        console.log(this.Authentication.state)
         return (
             <div>
-                <p>Hello world!</p>
+                <Alert variant="danger">Stream is offline</Alert>
+                <Alert variant="success">All prerequisites met!</Alert>
+                <ListGroup variant="flush">
+                    <ListGroup.Item variant="success"><FontAwesomeIcon icon={faCheckSquare} /> Logged in</ListGroup.Item>
+                    <ListGroup.Item variant="success"><FontAwesomeIcon icon={faCheckSquare} /> Watched an hour today</ListGroup.Item>
+                    <ListGroup.Item variant="success"><FontAwesomeIcon icon={faCheckSquare} /> Watched a three hours overall</ListGroup.Item>
+                </ListGroup>
                 <p>My token is: <span style={{overflowWrap: 'break-word'}}>{this.Authentication.state.token}</span></p>
                 <p>My opaque ID is {this.Authentication.getOpaqueId()}.</p>
                 <div>{this.Authentication.isModerator() ?
